@@ -1,113 +1,170 @@
+'use client'
+
 import Image from "next/image";
+import ButtonLink from "./design-system/components/Button";
+import Footer from "@/components/Footer";
+import FadeIn from "@/components/animated/FadeIn";
+import useScreenWidth from "@/hooks/useScreenWidth";
 
 export default function Home() {
+  const deviceType = useScreenWidth();
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <>
+      <main className="mx-auto flex flex-col gap-24 md:gap-32 lg:gap-44 mb-32">
+        <FadeIn className="flex lg:w-full lg:relative">
+          <FadeIn className="hero-black" xInitial={-100}></FadeIn>
+          <div className="hidden lg:flex lg:flex-col lg:absolute lg:top-48 lg:z-10 lg:max-w-lg lg:mix-blend-difference title-text">
+            <FadeIn className="ff-big-shoulders-display uppercase cl-white fs-M md:text-7xl lg:text-8xl lg:max-w-lg" delay={deviceType == "mobile" ? 0 : 1.1} xInitial={-150} ease={[0, 0.1, 0.2, 1.01]} duration={2}>
+              Modern
+            </FadeIn>
+            <FadeIn className="ff-big-shoulders-display uppercase cl-white fs-M md:text-7xl lg:text-8xl lg:max-w-lg" delay={deviceType == "mobile" ? 0 : 1.55} xInitial={200} ease={[0, 0.1, 0.2, 1.01]} duration={2}>
+              Art Gallery
+            </FadeIn>
+          </div>
+          <div className="md:flex lg:gap-0 lg:w-min bg-white">
+            <FadeIn className="hero-image-container" xInitial={150}>
+              <picture>
+                <source
+                  media="(min-width: 1024px)"
+                  srcSet="/assets/desktop/image-hero@2x.jpg"
+                />
+                <source
+                  media="(min-width: 768px)"
+                  srcSet="/assets/tablet/image-hero@2x.jpg"
+                />
+                <source srcSet="/assets/mobile/image-hero@2x.jpg" />
+                <Image
+                  src="/assets/desktop/image-hero@2x.jpg"
+                  alt="hero-image"
+                  fill={true}
+                />
+              </picture>
+            </FadeIn>
+            <div className="mx-4 flex flex-col gap-8 mt-8 hero-text-container md:-translate-x-12 md:mt-36 md:mx-0 lg:-translate-x-16 lg:max-w-sm">
+              <h1 className="ff-big-shoulders-display uppercase cl-black fs-M md:text-7xl lg:hidden">
+                Modern Art Gallery
+              </h1>
+              <p className="ff-outfit cl-grey fs-S2 lg:w-3/4">
+                The arts in the collection of the Modern Art Gallery all started
+                from a spark of inspiration. Will these pieces inspire you?
+                Visit us and find out.
+              </p>
+              <ButtonLink
+                variant="right"
+                text="Our Location"
+                href="/location"
+              />
+            </div>
+          </div>
+        </FadeIn>
+        <div className="px-4 md:px-10 lg:px-40 flex flex-col gap-8 md:gap-3 lg:gap-8">
+          <FadeIn delay={deviceType == "desktopWide" ? 2.5 : 0}>
+            <div className="flex flex-col gap-6 md:flex-row-reverse md:gap-16 lg:gap-32 lg:justify-between">
+              <div className="gallery-img1 relative w-full md:w-7/12">
+                <picture className="">
+                  <source
+                    media="(min-width: 1024px)"
+                    srcSet="/assets/desktop/image-grid-1@2x.jpg"
+                  />
+                  <source
+                    media="(min-width: 768px)"
+                    srcSet="/assets/tablet/image-grid-1@2x.jpg"
+                  />
+                  <source srcSet="/assets/mobile/image-grid-1@2x.jpg" />
+                  <Image
+                    src="/assets/desktop/image-grid@2x.jpg"
+                    alt="gallery image"
+                    // fill={true}
+                    height={1000}
+                    width={10000}
+                    style={{ objectFit: "contain" }}
+                    loading="lazy"
+                  />
+                </picture>
+              </div>
+
+              <div className="desc-container flex flex-col gap-5 md:w-5/12 md:items-start md:justify-center">
+                <FadeIn delay={deviceType == "desktopWide" ? 2.5 : 0} scaleInitial={0.9} duration={3} ease={[0, 0.1, 0.3, 1.01]}>
+                  <h2 className="ff-big-shoulders-display font-black desc-title uppercase cl-black">
+                    Your day at the gallery
+                  </h2>
+                </FadeIn>
+                <FadeIn delay={deviceType == "desktopWide" ? 2.5 : 0} scaleInitial={0.9} duration={3} ease={[0, 0.1, 0.3, 1.01]}>
+                  <p className="ff-outfit desc-text cl-grey">
+                    Wander through our distinct collections and find new
+                    insights about our artists. Dive into the details of their
+                    creative process.
+                  </p>
+                </FadeIn>
+              </div>
+            </div>
+          </FadeIn>
+          <div className="flex flex-col gap-4 md:grid md:grid-cols-[51.8229vw_1fr] md:grid-rows-[0.44146685472fr_1fr] md:h-max lg:grid-cols-[auto_1fr] lg:grid-rows-[0.auto_1fr] lg:gap-x-7 lg:gap-y-7">
+            <div className="relative md:row-span-2">
+              <FadeIn xInitial={-80}>
+                <picture>
+                  <source
+                    media="(min-width: 1024px)"
+                    srcSet="/assets/desktop/image-grid-2@2x.jpg"
+                  />
+                  <source
+                    media="(min-width: 768px)"
+                    srcSet="/assets/tablet/image-grid-2@2x.jpg"
+                  />
+                  <source srcSet="/assets/mobile/image-grid-2@2x.jpg" />
+                  <Image
+                    src="/assets/desktop/image-grid-2@2x.jpg"
+                    alt="hero-image"
+                    style={{ objectFit: "contain" }}
+                    width={635}
+                    height={720}
+                  />
+                </picture>
+              </FadeIn>
+            </div>
+
+            <FadeIn xInitial={180} scaleInitial={0.9}>
+              <picture>
+                <source
+                  media="(min-width: 1024px)"
+                  srcSet="/assets/desktop/image-grid-3@2x.jpg"
+                />
+                <source
+                  media="(min-width: 768px)"
+                  srcSet="/assets/tablet/image-grid-3@2x.jpg"
+                />
+                <source srcSet="/assets/mobile/image-grid-3@2x.jpg" />
+                <Image
+                  src="/assets/desktop/image-grid-3@2x.jpg"
+                  alt="hero-image"
+                  style={{ objectFit: "contain" }}
+                  width={635}
+                  height={720}
+                />
+              </picture>
+            </FadeIn>
+
+            <FadeIn
+              className="bg-black p-6 flex flex-col gap-6 md:justify-center md:items-center md:py-20 md:px-7 lg:px-12 lg:py-16"
+              id="desc-container"
+              xInitial={150}
+              scaleInitial={0.9}
+            >
+              <h2 className="ff-big-shoulders-display cl-white uppercase desc-title">
+                Come & Be Inspired
+              </h2>
+
+              <p className="ff-outfit cl-white desc-text">
+                We’re excited to welcome you to our gallery and see how our
+                collections influence you.
+              </p>
+            </FadeIn>
+          </div>
         </div>
-      </div>
-
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-full sm:before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full sm:after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50 text-balance`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
+      </main>
+      <Footer background="black" />
+    </>
   );
 }
+//
