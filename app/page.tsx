@@ -12,18 +12,18 @@ export default function Home() {
   return (
     <>
       <main className="mx-auto flex flex-col gap-24 md:gap-32 lg:gap-44 mb-32">
-        <FadeIn className="flex lg:w-full lg:relative">
-          <FadeIn className="hero-black" xInitial={-100}></FadeIn>
+        <div className="flex lg:w-full lg:relative">
+          <div className="hero-black"></div>
           <div className="hidden lg:flex lg:flex-col lg:absolute lg:top-48 lg:z-10 lg:max-w-lg lg:mix-blend-difference title-text">
-            <FadeIn className="ff-big-shoulders-display uppercase cl-white fs-M md:text-7xl lg:text-8xl lg:max-w-lg" delay={deviceType == "mobile" ? 0 : 1.1} xInitial={-150} ease={[0, 0.1, 0.2, 1.01]} duration={2}>
+            <div className="ff-big-shoulders-display uppercase cl-white fs-M md:text-7xl lg:text-8xl lg:max-w-lg"  >
               Modern
-            </FadeIn>
-            <FadeIn className="ff-big-shoulders-display uppercase cl-white fs-M md:text-7xl lg:text-8xl lg:max-w-lg" delay={deviceType == "mobile" ? 0 : 1.55} xInitial={200} ease={[0, 0.1, 0.2, 1.01]} duration={2}>
+            </div>
+            <div className="ff-big-shoulders-display uppercase cl-white fs-M md:text-7xl lg:text-8xl lg:max-w-lg"  >
               Art Gallery
-            </FadeIn>
+            </div>
           </div>
           <div className="md:flex lg:gap-0 lg:w-min bg-white">
-            <FadeIn className="hero-image-container" xInitial={150}>
+            <div className="hero-image-container" >
               <picture>
                 <source
                   media="(min-width: 1024px)"
@@ -40,7 +40,7 @@ export default function Home() {
                   fill={true}
                 />
               </picture>
-            </FadeIn>
+            </div>
             <div className="mx-4 flex flex-col gap-8 mt-8 hero-text-container md:-translate-x-12 md:mt-36 md:mx-0 lg:-translate-x-16 lg:max-w-sm">
               <h1 className="ff-big-shoulders-display uppercase cl-black fs-M md:text-7xl lg:hidden">
                 Modern Art Gallery
@@ -57,9 +57,9 @@ export default function Home() {
               />
             </div>
           </div>
-        </FadeIn>
+        </div>
         <div className="px-4 md:px-10 lg:px-40 flex flex-col gap-8 md:gap-3 lg:gap-8">
-          <FadeIn delay={deviceType == "desktopWide" ? 2.5 : 0}>
+          <div >
             <div className="flex flex-col gap-6 md:flex-row-reverse md:gap-16 lg:gap-32 lg:justify-between">
               <div className="gallery-img1 relative w-full md:w-7/12">
                 <picture className="">
@@ -85,24 +85,24 @@ export default function Home() {
               </div>
 
               <div className="desc-container flex flex-col gap-5 md:w-5/12 md:items-start md:justify-center">
-                <FadeIn delay={deviceType == "desktopWide" ? 2.5 : 0} scaleInitial={0.9} duration={3} ease={[0, 0.1, 0.3, 1.01]}>
+                <div >
                   <h2 className="ff-big-shoulders-display font-black desc-title uppercase cl-black">
                     Your day at the gallery
                   </h2>
-                </FadeIn>
-                <FadeIn delay={deviceType == "desktopWide" ? 2.5 : 0} scaleInitial={0.9} duration={3} ease={[0, 0.1, 0.3, 1.01]}>
+                </div>
+                <div >
                   <p className="ff-outfit desc-text cl-grey">
                     Wander through our distinct collections and find new
                     insights about our artists. Dive into the details of their
                     creative process.
                   </p>
-                </FadeIn>
+                </div>
               </div>
             </div>
-          </FadeIn>
+          </div>
           <div className="flex flex-col gap-4 md:grid md:grid-cols-[51.8229vw_1fr] md:grid-rows-[0.44146685472fr_1fr] md:h-max lg:grid-cols-[auto_1fr] lg:grid-rows-[0.auto_1fr] lg:gap-x-7 lg:gap-y-7">
             <div className="relative md:row-span-2">
-              <FadeIn xInitial={-80}>
+              <div >
                 <picture>
                   <source
                     media="(min-width: 1024px)"
@@ -121,10 +121,10 @@ export default function Home() {
                     height={720}
                   />
                 </picture>
-              </FadeIn>
+              </div>
             </div>
 
-            <FadeIn xInitial={180} scaleInitial={0.9}>
+            <div >
               <picture>
                 <source
                   media="(min-width: 1024px)"
@@ -143,13 +143,13 @@ export default function Home() {
                   height={720}
                 />
               </picture>
-            </FadeIn>
+            </div>
 
-            <FadeIn
+            <div
               className="bg-black p-6 flex flex-col gap-6 md:justify-center md:items-center md:py-20 md:px-7 lg:px-12 lg:py-16"
               id="desc-container"
-              xInitial={150}
-              scaleInitial={0.9}
+            
+              
             >
               <h2 className="ff-big-shoulders-display cl-white uppercase desc-title">
                 Come & Be Inspired
@@ -159,7 +159,7 @@ export default function Home() {
                 We’re excited to welcome you to our gallery and see how our
                 collections influence you.
               </p>
-            </FadeIn>
+            </div>
           </div>
         </div>
       </main>

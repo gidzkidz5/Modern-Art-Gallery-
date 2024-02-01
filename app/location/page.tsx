@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import ButtonLink from "../design-system/components/Button";
 import Location from "./components/location";
 import Footer from "@/components/Footer";
+import FadeIn from "@/components/animated/FadeIn";
 
 
 
@@ -22,6 +23,7 @@ const LocationPage = () => {
       <>
       <Location/>
       <Footer background="gold" />
+
       </>
  
  

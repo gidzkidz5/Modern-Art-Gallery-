@@ -1,4 +1,5 @@
 import ButtonLink from "@/app/design-system/components/Button"
+import FadeIn from "@/components/animated/FadeIn"
 import Image from "next/image"
 
 const Location = () => {
@@ -6,14 +7,14 @@ const Location = () => {
     return (
       <div className="bg-grey lg:flex lg:justify-center">
         <main className="w-full bg-black">
-        <div className="relative">
-            <div className="absolute top:0 left-0 w-full md:left-14 lg:left-36">
+        <FadeIn className="relative">
+            <FadeIn className="absolute top:0 left-0 w-full md:left-14 lg:left-36" delay={1.25} duration={2}>
                 <ButtonLink 
                     variant="left"
                     text="Back to Home"
                     href="/"
                 />
-            </div>
+            </FadeIn>
           <picture>
             <source
               media="(min-width: 1024px)"
@@ -32,8 +33,8 @@ const Location = () => {
               height={1440}
             />
           </picture>
-        </div>
-        <div className="bg-black pt-12 pb-14 px-4 md:py-20 md:px-10 md:grid md:grid-cols-2 md:grid-flow-row lg:px-40 lg:pt-24 lg:pb-32">
+        </FadeIn>
+        <FadeIn className="bg-black pt-12 pb-14 px-4 md:py-20 md:px-10 md:grid md:grid-cols-2 md:grid-flow-row lg:px-40 lg:pt-24 lg:pb-32" delay={0.8}>
             <h1 className="ff-big-shoulders-display uppercase cl-white desc-title mb-12 md:row-span-6">Our Location</h1>
             <h2 className="ff-big-shoulders-display cl-gold fs-S mb-5">99 King Street</h2>
             
@@ -42,9 +43,7 @@ const Location = () => {
             <p className="ff-outfit cl-white desc-text mb-5">United States of America</p>
             
             <p className="ff-outfit cl-white desc-text">Our newly opened gallery is located near the Edward King House on 99 King Street, the Modern Art Gallery is free to all visitors and open seven days a week from 8am to 9pm.</p>
-
-
-        </div>
+        </FadeIn>
       </main>
       </div>
     )
