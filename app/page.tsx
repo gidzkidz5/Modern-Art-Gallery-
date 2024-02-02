@@ -5,9 +5,19 @@ import ButtonLink from "./design-system/components/Button";
 import Footer from "@/components/Footer";
 import FadeIn from "@/components/animated/FadeIn";
 import useScreenWidth from "@/hooks/useScreenWidth";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   const deviceType = useScreenWidth();
+  const [isMounted, setIsMounted] = useState(false)
+ 
+  useEffect(() => {
+    setIsMounted(true)
+  },[])
+
+  if (!isMounted) {
+    return null
+  }
 
   return (
     <>
@@ -15,10 +25,10 @@ export default function Home() {
         <FadeIn className="flex lg:w-full lg:relative">
           <FadeIn className="hero-black" xInitial={-100}></FadeIn>
           <div className="hidden lg:flex lg:flex-col lg:absolute lg:top-48 lg:z-10 lg:max-w-lg lg:mix-blend-difference title-text">
-            <FadeIn className="ff-big-shoulders-display uppercase cl-white fs-M md:text-7xl lg:text-8xl lg:max-w-lg" delay={deviceType == "mobile" ? 0 : 1.1} xInitial={-150} ease={[0, 0.1, 0.2, 1.01]} duration={2}>
+            <FadeIn className="ff-big-shoulders-display uppercase cl-white fs-M md:text-7xl lg:text-8xl lg:max-w-lg" delay={deviceType == "mobile" ? 0 : 1.1} xInitial={-150} ease={[0.165, 0.84, 0.44, 1]} duration={2.5}>
               Modern
             </FadeIn>
-            <FadeIn className="ff-big-shoulders-display uppercase cl-white fs-M md:text-7xl lg:text-8xl lg:max-w-lg" delay={deviceType == "mobile" ? 0 : 1.55} xInitial={200} ease={[0, 0.1, 0.2, 1.01]} duration={2}>
+            <FadeIn className="ff-big-shoulders-display uppercase cl-white fs-M md:text-7xl lg:text-8xl lg:max-w-lg" delay={deviceType == "mobile" ? 0 : 1.55} xInitial={280} ease={[0.165, 0.84, 0.44, 1]} duration={2.45}>
               Art Gallery
             </FadeIn>
           </div>
@@ -37,7 +47,9 @@ export default function Home() {
                 <Image
                   src="/assets/desktop/image-hero@2x.jpg"
                   alt="hero-image"
-                  fill={true}
+                  // fill={true}
+                  height={1000}
+                  width={1000}
                 />
               </picture>
             </FadeIn>
@@ -59,7 +71,7 @@ export default function Home() {
           </div>
         </FadeIn>
         <div className="px-4 md:px-10 lg:px-40 flex flex-col gap-8 md:gap-3 lg:gap-8">
-          <FadeIn delay={deviceType == "desktopWide" ? 2.5 : 0}>
+          <FadeIn delay={deviceType == "desktopWide" ? 2.5 : 1.0}>
             <div className="flex flex-col gap-6 md:flex-row-reverse md:gap-16 lg:gap-32 lg:justify-between">
               <div className="gallery-img1 relative w-full md:w-7/12">
                 <picture className="">
@@ -148,8 +160,9 @@ export default function Home() {
             <FadeIn
               className="bg-black p-6 flex flex-col gap-6 md:justify-center md:items-center md:py-20 md:px-7 lg:px-12 lg:py-16"
               id="desc-container"
-              xInitial={150}
+              xInitial={deviceType == "mobile" ? -150 : 150}
               scaleInitial={0.9}
+              delay={0.25}
             >
               <h2 className="ff-big-shoulders-display cl-white uppercase desc-title">
                 Come & Be Inspired
@@ -167,4 +180,4 @@ export default function Home() {
     </>
   );
 }
-//
+//delay={deviceType == "desktopWide" ? 2.5 : 0}

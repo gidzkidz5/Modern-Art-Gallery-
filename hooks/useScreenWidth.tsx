@@ -23,6 +23,7 @@ const useScreenWidth = () => {
         // Cleanup the event listener
         return () => {
             window.removeEventListener('resize', handleResize);
+
         };
     }, []);
 
